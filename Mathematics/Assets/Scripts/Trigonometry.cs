@@ -14,6 +14,8 @@ public class Trigonometry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //TODO (Q3): Update the oscillation movement such that it resembles the mathematical infinite symbol.
+        //...
         transform.position = new Vector3(
             scale * Mathf.Sin(speed * Time.time)
             , 0

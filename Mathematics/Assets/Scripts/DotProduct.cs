@@ -27,6 +27,10 @@ public class DotProduct : MonoBehaviour
         float dot = fwd.x * e.x + fwd.y * e.y + fwd.z * e.z;
         //float dot = Vector3.Dot(fwd, e);
         float alpha = Mathf.Acos(dot / (fwd.magnitude * e.magnitude)) * Mathf.Rad2Deg;
+
+        //TODO (Q1): Update alpha such that its value is in [-180, 180]
+        //...
+
         Debug.Log(alpha);
 
         // compute the distance between me and enemy

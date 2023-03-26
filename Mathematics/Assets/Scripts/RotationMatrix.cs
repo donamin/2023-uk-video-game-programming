@@ -6,7 +6,9 @@ public class RotationMatrix : MonoBehaviour
 {
     public float theta = 0;
     public GameObject rotatedObject;
-    
+    //TODO (Q2): Define a reference for the second game object
+    //...
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -29,5 +31,8 @@ public class RotationMatrix : MonoBehaviour
             , 0
             , x * s + z * c
         );
+
+        //TODO (Q2): Update the position of the second game object such that it rotates -theta degrees
+        //...
     }
 }
