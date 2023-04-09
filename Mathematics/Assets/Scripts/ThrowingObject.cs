@@ -30,8 +30,7 @@ public class ThrowingObject : MonoBehaviour
             transform.position = Vector3.zero;
 
             //Initialize the velocity vector
-            velocity.x = v0_x;
-            velocity.z = v0_z;
+            velocity = new Vector3(v0_x, 0, v0_z);
         }
 
         if(throwing && !throwFinished)
@@ -39,11 +38,7 @@ public class ThrowingObject : MonoBehaviour
             //Throw in progress!
 
             //Update the position.
-            transform.position += new Vector3(
-                velocity.x * Time.deltaTime
-                , 0
-                , velocity.z * Time.deltaTime
-            );
+            transform.position += new Vector3(velocity.x, 0, velocity.z) * Time.deltaTime;
 
             //Update the z component of the velocity (the x component does not need to updated since its acceleration is zero)
             velocity.z += g * Time.deltaTime;
@@ -56,8 +51,8 @@ public class ThrowingObject : MonoBehaviour
             }
         }
 
-        float t_end = 0;
         //Compute the time after which the throwing is finished
+        float t_end = -2 * v0_z / g;
 
         //Draw the X & Z axes.
         int nPoints = 200;
@@ -72,7 +67,8 @@ public class ThrowingObject : MonoBehaviour
         for (int i = 0; i < nPoints; i++)
         {
             float t = Mathf.Lerp(0, t_end, (float)(i) / nPoints);
-            float x = 0, z = 0;
+            float x = v0_x * t;
+            float z = 0.5f * g * t * t + v0_z * t;
             //Compute the X & Z components at time t
             lineRenderer.SetPosition(i + 5, new Vector3(x, 0, z));
         }
